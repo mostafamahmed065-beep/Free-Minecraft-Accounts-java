@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Minecraft Accounts</title>
+<style>
+:root{
+  --bg1:#05070d; --accent:#5ee66b; --accent2:#2bd4a8; --purple:#7c4dff;
+  --gold:#ffd24d; --ok:#20e37a; --err:#ff4d6d; --line:#273458; --card:rgba(14,20,38,.78);
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,Arial,sans-serif;}
+html,body{min-height:100%;}
+body{
+  background:radial-gradient(circle at 50% 0%,#0b2417 0%,#050810 42%,#000 100%);
+  color:#e8eefc;min-height:100vh;overflow-x:hidden;padding:26px 14px 60px;
+  display:flex;flex-direction:column;align-items:center;
+}
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28;animation:float 16s ease-in-out infinite;}
+.blob.b1{width:420px;height:420px;background:var(--accent);top:-130px;left:-110px;opacity:.22;}
+.blob.b2{width:360px;height:360px;background:var(--purple);bottom:-130px;right:-90px;animation-delay:-6s;}
+.blob.b3{width:320px;height:320px;background:var(--accent2);top:42%;left:58%;animation-delay:-10s;}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(45px,-35px) scale(1.18);}}
+#particles{position:fixed;inset:0;z-index:-1;pointer-events:none;}
+
+/* intro */
+#intro{position:fixed;inset:0;z-index:999;background:radial-gradient(circle at 50% 40%,#0e1b16,#05070f);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .8s ease,visibility .8s;}
+#intro.hide{opacity:0;visibility:hidden;}
+.intro-ava{width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);
+  box-shadow:0 0 40px rgba(94,230,107,.6);opacity:0;transform:scale(.4) rotate(-20deg);
+  animation:avaIn 1s cubic-bezier(.17,.67,.3,1.3) .2s forwards;}
+@keyframes avaIn{to{opacity:1;transform:scale(1) rotate(0);}}
+.intro-ring{position:absolute;width:190px;height:190px;border-radius:50%;border:2px dashed rgba(94,230,107,.5);
+  animation:spin 8s linear infinite;margin-top:-62px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.intro-txt{font-size:1.9rem;font-weight:800;letter-spacing:1px;opacity:0;
+  background:linear-gradient(90deg,var(--accent),var(--gold),var(--purple));background-size:200%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:txtIn .9s ease 1s forwards,shimmer 3s linear infinite;}
+@keyframes txtIn{to{opacity:1;transform:translateY(0);}}
+@keyframes shimmer{to{background-position:200%;}}
+.intro-sub{color:#8ea0c9;font-size:.9rem;letter-spacing:3px;opacity:0;animation:txtIn .8s ease 1.5s forwards;}
+.loader{width:150px;height:4px;border-radius:4px;background:#1a2544;overflow:hidden;opacity:0;animation:txtIn .6s ease 1.7s forwards;}
+.loader span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--purple));animation:load 1.6s ease 1.8s forwards;}
+@keyframes load{to{width:100%;}}
+
+/* topbar */
+.topbar{width:100%;max-width:680px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:10px;}
+.lang{display:flex;gap:6px;background:rgba(14,20,38,.8);border:1px solid var(--line);border-radius:30px;padding:4px;}
+.lang button{border:none;background:transparent;color:#8ea0c9;padding:6px 14px;border-radius:20px;cursor:pointer;font-weight:700;font-size:.85rem;transition:.25s;}
+.lang button.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#031810;}
+.gear{width:42px;height:42px;border-radius:50%;background:rgba(14,20,38,.8);border:1px solid var(--line);
+  color:#8ea0c9;font-size:1.25rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.35s;}
+.gear:hover{color:var(--accent);transform:rotate(90deg);border-color:var(--accent);}
+
+/* title */
+.title{font-size:2.3rem;font-weight:900;letter-spacing:1px;margin:10px 0 4px;text-align:center;cursor:default;padding:0 .25em;
+  background:linear-gradient(90deg,var(--accent),var(--accent2),var(--purple),var(--gold));background-size:300%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:shimmer 5s linear infinite;transition:transform .4s,filter .4s;display:inline-block;}
+.title:hover{transform:scale(1.07) rotate(-1deg);filter:drop-shadow(0 0 22px rgba(124,77,255,.6));letter-spacing:3px;}
+.title .pick{display:inline-block;}
+.tagline{color:rgba(255,255,255,.28);font-size:.8rem;font-weight:500;letter-spacing:1px;margin-bottom:22px;text-align:center;}
+
+.wrap{width:100%;max-width:680px;display:flex;flex-direction:column;gap:20px;}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 10px;text-align:center;
+  backdrop-filter:blur(10px);position:relative;overflow:hidden;transition:.3s;}
+.stat:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 10px 30px rgba(0,0,0,.4);}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--purple));}
+.stat .num{font-size:1.9rem;font-weight:900;font-family:'Consolas',monospace;line-height:1;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.stat.taken .num{background:linear-gradient(90deg,var(--err),#ff8f3f);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.stat.total .num{background:linear-gradient(90deg,var(--gold),#ffb34d);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.stat .lbl{color:#8ea0c9;font-size:.78rem;font-weight:600;margin-top:6px;}
+
+/* tabs */
+.tabs{display:flex;gap:8px;background:rgba(14,20,38,.7);border:1px solid var(--line);border-radius:14px;padding:6px;}
+.tabs button{flex:1;border:none;background:transparent;color:#8ea0c9;padding:12px;border-radius:10px;cursor:pointer;font-weight:800;font-size:.95rem;transition:.25s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.tabs button.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#031810;box-shadow:0 6px 18px rgba(94,230,107,.3);}
+.tabpane{display:none;}
+.tabpane.active{display:flex;flex-direction:column;gap:26px;animation:fadeUp .5s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;backdrop-filter:blur(10px);box-shadow:0 10px 40px rgba(0,0,0,.4);}
+
+/* buttons */
+.genbtn{position:relative;width:100%;padding:23px;border:none;border-radius:14px;cursor:pointer;text-align:center;
+  font-size:1.5rem;font-weight:900;letter-spacing:1px;color:#031810;background-size:200% 100%;transition:.3s;overflow:hidden;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));margin-top:16px;animation:claimGlow 1.9s ease-in-out infinite;}
+@keyframes claimGlow{0%,100%{box-shadow:0 0 22px rgba(94,230,107,.45),0 8px 25px rgba(94,230,107,.3);}50%{box-shadow:0 0 48px rgba(94,230,107,.9),0 8px 42px rgba(43,212,168,.7);}}
+.genbtn:hover:not(:disabled){background-position:100% 0;transform:translateY(-2px);}
+.genbtn:active:not(:disabled){transform:translateY(1px) scale(.99);}
+.genbtn:disabled{cursor:not-allowed;filter:grayscale(.5) brightness(.7);animation:none;}
+.genbtn::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);animation:sheen 3.5s ease-in-out infinite;}
+@keyframes sheen{0%,60%{left:-60%;}100%{left:140%;}}
+
+/* result */
+.result{opacity:0;transform:translateY(20px);transition:.5s;display:none;}
+.result.show{opacity:1;transform:translateY(0);display:block;}
+.acc{background:#0c1328;border:1px solid var(--accent);border-radius:14px;padding:18px;direction:ltr;text-align:left;box-shadow:0 0 22px rgba(94,230,107,.22);}
+.acc .row{display:flex;gap:8px;font-size:1.05rem;padding:6px 0;word-break:break-all;}
+.acc .k{color:var(--accent);font-weight:700;min-width:95px;}
+.acc .v{color:#eaf2ff;font-family:'Consolas',monospace;}
+.copybtn{margin-top:14px;width:100%;padding:12px;border:none;border-radius:10px;cursor:pointer;font-size:1rem;font-weight:700;color:#fff;background:linear-gradient(90deg,#20e37a,#0bc98f);transition:.25s;}
+.copybtn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(32,227,122,.4);}
+.copybtn.copied{background:linear-gradient(90deg,var(--purple),#5e35ff);}
+
+.msg{text-align:center;padding:16px;border-radius:12px;font-weight:700;font-size:1.05rem;display:none;}
+.msg.err{background:rgba(255,77,109,.12);border:1px solid var(--err);color:#ff8fa3;}
+
+/* timer */
+.timer{display:none;text-align:center;padding:16px;border-radius:12px;background:rgba(124,77,255,.1);border:1px solid var(--purple);}
+.timer.show{display:block;}
+.timer .clock{font-size:2.2rem;font-weight:800;font-family:'Consolas',monospace;color:var(--accent);letter-spacing:2px;}
+.timer .t{color:#b9a9ff;font-size:.9rem;margin-top:4px;}
+.bar{height:6px;border-radius:6px;background:#1a2544;margin-top:12px;overflow:hidden;}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--purple));transition:width 1s linear;}
+.premnote{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:10px;align-items:center;}
+.premnote span{color:#ffe08a;font-weight:800;font-size:.98rem;}
+.premnote button{padding:11px 26px;border:none;border-radius:10px;cursor:pointer;font-weight:800;font-size:.95rem;color:#2a1800;background:linear-gradient(90deg,var(--gold),#ffb020);box-shadow:0 6px 18px rgba(255,210,77,.35);transition:.25s;}
+.premnote button:hover{transform:translateY(-2px) scale(1.04);}
+
+/* gate */
+.gate{display:none;text-align:center;padding:22px;border-radius:16px;background:linear-gradient(135deg,rgba(255,0,0,.1),rgba(124,77,255,.1));border:1px solid #ff4d4d;animation:fadeUp .4s ease;}
+.gate.show{display:block;}
+.gate-icon{font-size:2.4rem;margin-bottom:8px;animation:pulse2 1.8s ease-in-out infinite;}
+.gate-txt{font-size:1.1rem;font-weight:700;color:#fff;line-height:1.6;margin-bottom:16px;}
+.gate-txt b{color:#ff5e5e;font-size:1.25rem;}
+.subbtn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border:none;border-radius:12px;cursor:pointer;font-size:1.1rem;font-weight:800;color:#fff;background:linear-gradient(90deg,#ff0000,#cc0000);box-shadow:0 8px 22px rgba(255,0,0,.4);transition:.3s;animation:pulse2 2.2s ease-in-out infinite;}
+.subbtn:hover{transform:scale(1.07);}
+.subbtn:disabled{filter:grayscale(.4) brightness(.8);cursor:default;animation:none;}
+.subprog{display:none;height:10px;border-radius:8px;background:#0c1328;margin-top:18px;overflow:hidden;border:1px solid var(--line);}
+.subprog.show{display:block;}
+.subprog span{display:block;height:100%;width:0;background:linear-gradient(90deg,#20e37a,#5ee66b);box-shadow:0 0 12px rgba(94,230,107,.7);}
+.subwait{display:none;color:#5ee66b;font-weight:700;font-size:.95rem;margin-top:10px;font-family:'Consolas',monospace;}
+.subwait.show{display:block;}
+
+/* want premium */
+.wantprem{text-align:center;padding:18px;border-radius:16px;background:rgba(14,20,38,.6);border:1px dashed var(--purple);display:none;flex-direction:column;gap:12px;align-items:center;animation:fadeUp .4s ease;}
+.wantprem.show{display:flex;}
+.wantprem span{color:#b9a9ff;font-weight:800;font-size:1.05rem;}
+.wantprem button{display:inline-flex;align-items:center;gap:8px;padding:13px 34px;border:none;border-radius:12px;cursor:pointer;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(90deg,#5865F2,#7c4dff);box-shadow:0 8px 22px rgba(88,101,242,.4);transition:.3s;animation:pulse2 2.5s ease-in-out infinite;}
+.wantprem button:hover{transform:scale(1.07);}
+
+/* premium lock */
+.locked-wrap{position:relative;border-radius:18px;overflow:hidden;}
+.locked-content{display:flex;flex-direction:column;gap:18px;filter:blur(8px) brightness(.7);pointer-events:none;user-select:none;}
+.lock-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:radial-gradient(circle at 50% 40%,rgba(5,7,13,.6),rgba(5,7,13,.85));backdrop-filter:blur(2px);}
+.lock-icon{font-size:3rem;filter:drop-shadow(0 0 16px rgba(94,230,107,.7));animation:pulse2 2s ease-in-out infinite;}
+.lock-txt{font-size:1.3rem;font-weight:900;letter-spacing:1px;color:#fff;text-shadow:0 0 14px rgba(94,230,107,.6);}
+
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;transition:.3s;}
+.pcard:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 10px 30px rgba(255,210,77,.15);}
+.pcard h3{display:flex;align-items:center;gap:8px;font-size:1.1rem;margin-bottom:12px;color:#ffe08a;}
+.codebox{background:#0c1328;border:1px dashed var(--gold);border-radius:10px;padding:14px;text-align:center;font-family:'Consolas',monospace;font-size:1.1rem;letter-spacing:2px;color:#ffe9a8;margin-bottom:12px;min-height:50px;display:flex;align-items:center;justify-content:center;word-break:break-all;}
+.pbtn{width:100%;padding:13px;border:none;border-radius:10px;cursor:pointer;font-weight:800;font-size:.98rem;transition:.25s;}
+.pbtn.gold{background:linear-gradient(90deg,var(--gold),#ffb020);color:#2a1800;}
+.pbtn.gold:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(255,210,77,.4);}
+.pbtn.copy2{background:#243256;color:#cbd8ff;margin-top:8px;}
+.buybox{background:linear-gradient(135deg,rgba(124,77,255,.18),rgba(255,210,77,.1));border:1px solid var(--purple);border-radius:16px;padding:22px;text-align:center;}
+.buybox h3{font-size:1.25rem;color:#fff;margin-bottom:6px;}
+.buybox p{color:#b9a9ff;font-size:.9rem;margin-bottom:16px;}
+.buybtn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border:none;border-radius:12px;cursor:pointer;font-size:1.1rem;font-weight:800;color:#fff;background:linear-gradient(90deg,#5865F2,#7c4dff);box-shadow:0 8px 25px rgba(88,101,242,.45);transition:.3s;animation:pulse2 2.5s ease-in-out infinite;}
+@keyframes pulse2{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+.buybtn:hover{transform:scale(1.08);}
+
+/* feats widget */
+.feats-widget{position:fixed;top:66px;right:14px;z-index:120;width:230px;}
+.feats-toggle{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;border:1px solid var(--purple);border-radius:12px;cursor:pointer;font-weight:800;font-size:.9rem;color:#2a1800;background:linear-gradient(90deg,var(--gold),#ffb020);box-shadow:0 6px 20px rgba(255,210,77,.35);transition:.25s;}
+.feats-toggle:hover{transform:translateY(-2px);}
+.feats-toggle .arrow{transition:transform .3s;}
+.feats-widget.open .feats-toggle .arrow{transform:rotate(180deg);}
+.feats-drop{max-height:0;opacity:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease,margin .3s;
+  background:linear-gradient(135deg,rgba(124,77,255,.95),rgba(30,20,60,.97));border:1px solid var(--purple);border-radius:12px;backdrop-filter:blur(12px);box-shadow:0 12px 34px rgba(0,0,0,.5);}
+.feats-widget.open .feats-drop{max-height:360px;opacity:1;margin-top:8px;padding:12px;}
+.featlist{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.featlist li{display:flex;align-items:center;gap:10px;background:rgba(12,19,40,.5);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-weight:700;font-size:.9rem;color:#eaf2ff;transition:.25s;}
+.featlist li:hover{transform:translateX(6px);border-color:var(--accent);}
+.featlist li span{font-size:1.2rem;}
+@media(max-width:620px){.feats-widget{position:static;width:100%;max-width:680px;margin:0 auto 4px;}}
+
+/* credit */
+.credit{margin-top:34px;display:flex;align-items:center;gap:12px;color:#8ea0c9;font-size:.9rem;background:rgba(14,20,38,.6);border:1px solid var(--line);border-radius:40px;padding:8px 18px 8px 8px;transition:.3s;}
+.credit:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.4);}
+.credit img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);}
+.credit b{color:#eaf2ff;}
+
+/* misc */
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:#20e37a;color:#03130a;padding:12px 24px;border-radius:30px;font-weight:700;box-shadow:0 8px 25px rgba(0,0,0,.4);opacity:0;transition:.4s;z-index:200;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+.overlay{position:fixed;inset:0;background:rgba(3,6,14,.82);backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;z-index:300;padding:16px;}
+.overlay.show{display:flex;}
+.modal{width:100%;max-width:520px;background:#0e1631;border:1px solid var(--purple);border-radius:18px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.6);animation:pop .3s ease;}
+@keyframes pop{from{transform:scale(.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+.modal h2{font-size:1.3rem;margin-bottom:16px;color:#cbd8ff;display:flex;align-items:center;gap:8px;}
+.modal label{display:block;font-weight:700;margin-bottom:8px;color:#bcd0ff;font-size:.9rem;}
+.modal input,.modal textarea{width:100%;border-radius:10px;padding:12px;background:#0c1328;border:1px solid var(--line);color:#dbe6ff;font-size:.95rem;outline:none;transition:.25s;}
+.modal input:focus,.modal textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,77,255,.15);}
+.modal textarea{min-height:170px;resize:vertical;font-family:'Consolas',monospace;line-height:1.7;direction:ltr;text-align:left;}
+.modal .cnt{float:right;color:#8ea0c9;font-weight:500;font-size:.82rem;}
+.btnrow{display:flex;gap:10px;margin-top:16px;}
+.mbtn{flex:1;padding:13px;border:none;border-radius:10px;cursor:pointer;font-weight:700;font-size:.95rem;transition:.25s;}
+.mbtn.save{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#031810;}
+.mbtn.close{background:#243256;color:#cbd8ff;}
+.mbtn:hover{transform:translateY(-1px);}
+.loginerr{color:#ff8fa3;font-size:.88rem;margin-top:8px;display:none;}
+.hint{color:#6f82ab;font-size:.8rem;margin-top:10px;line-height:1.6;}
+.join-modal{max-width:380px;text-align:center;position:relative;border-color:#5865F2;}
+.join-x{position:absolute;top:12px;right:14px;background:transparent;border:none;color:#8ea0c9;font-size:1.1rem;cursor:pointer;}
+.join-x:hover{color:#fff;}
+.join-icon{font-size:3rem;margin-bottom:6px;animation:pulse2 2s ease-in-out infinite;}
+.join-title{font-size:1.25rem!important;justify-content:center;margin-bottom:20px!important;color:#fff;}
+.joinbtn{display:inline-flex;align-items:center;gap:10px;padding:14px 38px;border:none;border-radius:12px;cursor:pointer;font-size:1.15rem;font-weight:800;color:#fff;background:linear-gradient(90deg,#5865F2,#7c4dff);box-shadow:0 8px 25px rgba(88,101,242,.5);transition:.3s;animation:pulse2 2.4s ease-in-out infinite;}
+.joinbtn:hover{transform:scale(1.08);}
+
+/* setup banner */
+.setup{position:fixed;top:0;left:0;right:0;z-index:400;background:#ffb020;color:#2a1800;text-align:center;padding:10px 16px;font-weight:800;font-size:.85rem;}
+</style>
+</head>
+<body>
+
+<div id="intro">
+  <div class="intro-ring"></div>
+  <img class="intro-ava" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><rect width='160' height='160' fill='%230b1220'/><rect x='30' y='30' width='100' height='70' rx='6' fill='%231d2b3f'/><rect x='38' y='38' width='18' height='18' fill='%234a5470'/><rect x='60' y='38' width='18' height='18' fill='%234a5470'/><rect x='82' y='38' width='18' height='18' fill='%234a5470'/><rect x='104' y='38' width='18' height='18' fill='%234a5470'/><rect x='30' y='62' width='100' height='38' rx='4' fill='%232e7d32'/><rect x='30' y='96' width='100' height='26' rx='4' fill='%235d4037'/><rect x='46' y='104' width='10' height='10' fill='%238d6e63'/><rect x='60' y='104' width='10' height='10' fill='%238d6e63'/></svg>" alt="Mostafa_xpro">
+  <div class="intro-txt">Created By Mostafa_xpro</div>
+  <div class="intro-sub">LOADING…</div>
+  <div class="loader"><span></span></div>
+</div>
+
+<div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<canvas id="particles"></canvas>
+
+<div class="setup" id="setupBanner" style="display:none;">⚠️ Server not reachable — accounts will NOT be shared with followers.</div>
+
+<div class="topbar">
+  <button class="gear" id="gear" title="Admin">⚙️</button>
+  <div class="lang">
+    <button data-lang="en" class="active">EN</button>
+    <button data-lang="ar">عربي</button>
+  </div>
+</div>
+
+<!-- Premium Features floating widget -->
+<div class="feats-widget" id="featsWidget">
+  <button class="feats-toggle" id="featsToggle">⚡ Premium Features <span class="arrow">▾</span></button>
+  <div class="feats-drop" id="featsDrop">
+    <ul class="featlist">
+      <li><span>⏰</span> No CoolDown</li>
+      <li><span>💎</span> Unbanned Accounts</li>
+      <li><span>🔐</span> Private Accounts</li>
+      <li><span>🔮</span> XBOX CODES</li>
+      <li><span>💸</span> Discord Nitro</li>
+    </ul>
+  </div>
+</div>
+
+<h1 class="title">Free Minecraft Accounts <span class="pick">⛏️</span></h1>
+<p class="tagline">Claim Your Free Minecraft Premium Account Today</p>
+
+<div class="wrap">
+
+  <div class="tabs">
+    <button class="tab active" data-tab="free">🆓 <span data-i18n="tabFree">Free</span></button>
+    <button class="tab prem" data-tab="prem">💎 <span data-i18n="tabPrem">Premium</span></button>
+  </div>
+
+  <div class="tabpane active" id="pane-free">
+
+    <button class="genbtn" id="gen" data-i18n="genBtn">Claim Your Minecraft Account 💎</button>
+
+    <div class="stats">
+      <div class="stat available"><div class="num" id="nAvail">0</div><div class="lbl" data-i18n="avail">Available</div></div>
+      <div class="stat taken"><div class="num" id="nTaken">0</div><div class="lbl" data-i18n="taken">Taken</div></div>
+      <div class="stat total"><div class="num" id="nTotal">0</div><div class="lbl" data-i18n="total">Total</div></div>
+    </div>
+
+    <div class="msg err" id="errmsg" data-i18n="noAcc">No Accounts Available</div>
+
+    <div class="gate" id="gate">
+      <div class="gate-icon">▶️</div>
+      <div class="gate-txt">You Must Subscribe To<br><b>Mostafa_Pro Channel</b></div>
+      <button class="subbtn" id="subBtn">▶ Subscribe</button>
+      <div class="subprog" id="subProg"><span id="subBar"></span></div>
+      <div class="subwait" id="subWait">Verifying… 30s</div>
+    </div>
+
+    <div class="timer" id="timer">
+      <div class="clock" id="clock">07:00</div>
+      <div class="t" data-i18n="wait">Wait before taking a new account</div>
+      <div class="bar"><span id="bar"></span></div>
+      <div class="premnote">
+        <span>💎 Premium Has No CoolDown</span>
+        <button id="buyPrem">Buy Premium</button>
+      </div>
+    </div>
+
+    <div class="result" id="result">
+      <div class="acc">
+        <div class="row"><span class="k">Email:</span><span class="v" id="email"></span></div>
+        <div class="row"><span class="k">Password:</span><span class="v" id="pass"></span></div>
+      </div>
+      <button class="copybtn" id="copy" data-i18n="copyAcc">📋 Copy Account</button>
+    </div>
+
+    <div class="wantprem">
+      <span>Want Premium?</span>
+      <button id="buyHere">🛍️ Buy Here</button>
+    </div>
+
+  </div>
+
+  <div class="tabpane" id="pane-prem">
+    <div class="locked-wrap">
+      <div class="locked-content">
+        <div class="pcard">
+          <h3>🎮 <span data-i18n="xbox">Xbox Game Pass Code</span></h3>
+          <div class="codebox" id="xboxCode">—</div>
+          <button class="pbtn gold" id="genXbox" data-i18n="genCode">Generate Code</button>
+          <button class="pbtn copy2" id="copyXbox" data-i18n="copyCode">📋 Copy</button>
+        </div>
+        <div class="pcard">
+          <h3>🚀 <span data-i18n="nitro">Discord Nitro Code</span></h3>
+          <div class="codebox" id="nitroCode">—</div>
+          <button class="pbtn gold" id="genNitro" data-i18n="genCode">Generate Code</button>
+          <button class="pbtn copy2" id="copyNitro" data-i18n="copyCode">📋 Copy</button>
+        </div>
+        <div class="buybox">
+          <h3>💎 <span data-i18n="buyTitle">Buy Premium</span></h3>
+          <p data-i18n="buyDesc">Get unlimited Xbox &amp; Nitro codes</p>
+          <button class="buybtn" id="buyBtn">🛍️ <span data-i18n="buyBtn">Buy Premium</span></button>
+        </div>
+      </div>
+      <div class="lock-overlay">
+        <div class="lock-icon">🔒</div>
+        <div class="lock-txt">Premium Locked</div>
+        <button class="buybtn" id="buyPremOverlay">💎 Buy Premium</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="credit">
+  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><rect width='160' height='160' fill='%230b1220'/><rect x='30' y='30' width='100' height='70' rx='6' fill='%231d2b3f'/><rect x='38' y='38' width='18' height='18' fill='%234a5470'/><rect x='60' y='38' width='18' height='18' fill='%234a5470'/><rect x='82' y='38' width='18' height='18' fill='%234a5470'/><rect x='104' y='38' width='18' height='18' fill='%234a5470'/><rect x='30' y='62' width='100' height='38' rx='4' fill='%232e7d32'/><rect x='30' y='96' width='100' height='26' rx='4' fill='%235d4037'/><rect x='46' y='104' width='10' height='10' fill='%238d6e63'/><rect x='60' y='104' width='10' height='10' fill='%238d6e63'/></svg>" alt="Mostafa_xpro">
+  <span data-i18n="createdBy">Created By</span> <b>Mostafa_xpro</b>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div id="loginStep">
+      <h2>🔒 Admin Login</h2>
+      <label data-i18n="pwLabel">Password</label>
+      <input type="password" id="pw" placeholder="••••••">
+      <div class="loginerr" id="loginerr" data-i18n="pwErr">Wrong password ❌</div>
+      <div class="btnrow">
+        <button class="mbtn save" id="loginBtn" data-i18n="loginBtn">Login</button>
+        <button class="mbtn close" id="closeLogin" data-i18n="cancel">Cancel</button>
+      </div>
+    </div>
+    <div id="adminStep" style="display:none;">
+      <h2>🛠️ <span data-i18n="adminPanel">Admin Panel</span></h2>
+      <label><span data-i18n="accsLabel">Accounts (email:pass)</span> <span class="cnt" id="adminCount">0</span></label>
+      <textarea id="stockBox" placeholder="test@gmail.com:pass1200&#10;player2@mail.com:mc12345"></textarea>
+      <div class="btnrow">
+        <button class="mbtn save" id="saveBtn" data-i18n="saveBtn">💾 Save</button><button class="mbtn" id="replaceBtn" style="margin-top:8px;background:#7a1f2b;border-color:#7a1f2b;color:#fff">♻️ Replace All</button>
+        <button class="mbtn close" id="closeAdmin" data-i18n="closeBtn">Close</button>
+      </div>
+      <div class="hint" id="adminHint">One account per line as email:pass. Saved for everyone via the server.</div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="joinOverlay">
+  <div class="modal join-modal">
+    <button class="join-x" id="joinClose">✕</button>
+    <div class="join-icon">💬</div>
+    <h2 class="join-title">Join Discord Server To Buy</h2>
+    <button class="joinbtn" id="joinBtn">Join</button>
+  </div>
+</div>
+
+<div class="toast" id="toast">Copied!</div>
+
+<script>
+/* ================= CONFIG ================= */
+const ADMIN_PASSWORD = "M0st@f@_Pr0";
+const DISCORD_LINK   = "https://discord.gg/F47ga245z8";
+const YT_LINK        = "http://www.youtube.com/@Mostafa_xPro";
+const COOLDOWN = 7 * 60;
+const SUB_WAIT = 30;
+
+
+/* 🔧 لو رفعت السيرفر على Render/Railway: حدد رابط السيرفر هنا
+   مثال: 'https://mc-accounts.onrender.com'  (لو الموقع والسيرفر على نفس الدومين سيبه فاضي) */
+const SERVER_URL = '';
+if(SERVER_URL){ localStorage.setItem('mc_api', SERVER_URL); }
+
+const LS = {
+  stock: "mc_stock_v2",
+  taken: "mc_taken_v2",
+  cd:    "mc_cd_until"
+};
+
+/* ================= i18n ================= */
+const I18N={
+ en:{avail:"Available",taken:"Taken",total:"Total",tabFree:"Free",tabPrem:"Premium",genBtn:"Claim Your Minecraft Account 💎",noAcc:"No Accounts Available",wait:"Wait before taking a new account",copyAcc:"📋 Copy Account",xbox:"Xbox Game Pass Code",nitro:"Discord Nitro Code",genCode:"Generate Code",copyCode:"📋 Copy",buyTitle:"Buy Premium",buyDesc:"Get unlimited Xbox & Nitro codes",buyBtn:"Buy Premium",createdBy:"Created By",pwLabel:"Password",pwErr:"Wrong password ❌",loginBtn:"Login",cancel:"Cancel",adminPanel:"Admin Panel",accsLabel:"Accounts (email:pass)",saveBtn:"💾 Save",closeBtn:"Close",adminHint:"One account per line as email:pass. Saved for everyone via the server.",copied:"Copied!",saved:"✅ Saved",sync:"Syncing…"},
+ ar:{avail:"متوفر",taken:"اتسحب",total:"الإجمالي",tabFree:"مجاني",tabPrem:"بريميوم",genBtn:"Claim Your Minecraft Account 💎",noAcc:"No Accounts Available",wait:"انتظر قبل سحب حساب جديد",copyAcc:"📋 نسخ الحساب",xbox:"كود Xbox Game Pass",nitro:"كود Discord Nitro",genCode:"توليد كود",copyCode:"📋 نسخ",buyTitle:"اشتري البريميوم",buyDesc:"احصل على وصول غير محدود لكودات Xbox و Nitro",buyBtn:"شراء بريميوم",createdBy:"تم الإنشاء بواسطة",pwLabel:"الباسورد",pwErr:"باسورد غلط ❌",loginBtn:"دخول",cancel:"إلغاء",adminPanel:"لوحة الأدمن",accsLabel:"الحسابات (email:pass)",saveBtn:"💾 حفظ",closeBtn:"إغلاق",adminHint:"كل حساب بسطر بصيغة email:pass. تنحفظ للكل عبر السيرفر.",copied:"تم النسخ!",saved:"✅ تم الحفظ",sync:"جاري المزامنة…"}
+};
+let LANG="en";
+function t(k){return (I18N[LANG]&&I18N[LANG][k])||I18N.en[k]||k;}
+function applyLang(l){
+ LANG=l; const d=I18N[l];
+ document.documentElement.lang=l; document.documentElement.dir=(l==='ar'?'rtl':'ltr');
+ document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n'); if(d[k]!=null) el.textContent=d[k];});
+ document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
+
+/* ================= elements ================= */
+const $=id=>document.getElementById(id);
+const gen=$('gen'),result=$('result'),errmsg=$('errmsg'),timerBox=$('timer'),clock=$('clock'),bar=$('bar'),
+ emailEl=$('email'),passEl=$('pass'),copyBtn=$('copy'),toast=$('toast'),
+ nAvail=$('nAvail'),nTaken=$('nTaken'),nTotal=$('nTotal');
+let current=null,countdown=null;
+
+/* =========================================================
+   DATA LAYER — مربوط بسيرفرك (Express)
+   كل الحسابات والكولداون في السيرفر → كل المتابعين يشوفوا نفس الحاجة
+   ========================================================= */
+const API = (()=>{
+  const saved = localStorage.getItem('mc_api') || '';
+  if(saved) return saved.replace(/\/$/,'');
+  const host = location.hostname;
+  if(location.port==='3000' || location.port==='8080') return location.origin;
+  if(host==='localhost'||host==='127.0.0.1'||host==='') return 'http://localhost:3000';
+  return location.origin; // الموقع والسيرفر على نفس الدومين
+})();
+
+let online=false, stockCache=[], lastStats={count:0,taken:0};
+
+function localStock(){try{return JSON.parse(localStorage.getItem(LS.stock)||'[]');}catch(e){return[];}}
+function localSetStock(a){localStorage.setItem(LS.stock,JSON.stringify(a));}
+function localTaken(){return parseInt(localStorage.getItem(LS.taken)||'0',10);}
+function localSetTaken(n){localStorage.setItem(LS.taken,String(n));}
+
+function showDbError(msg){
+  const b=$('setupBanner');
+  if(b){ b.style.display='block'; b.textContent = msg || '⚠️ Server not reachable — accounts will NOT be shared. Check SERVER URL / that your server is running.'; }
+}
+function hideDbError(){ const b=$('setupBanner'); if(b) b.style.display='none'; }
+
+async function api(path,opt){
+  const r = await fetch(API+path, Object.assign({headers:{'Content-Type':'application/json'}}, opt||{}));
+  let j=null; try{ j=await r.json(); }catch(e){}
+  if(!r.ok) throw Object.assign(new Error((j&&j.error)||('HTTP '+r.status)), {status:r.status, data:j});
+  return j;
+}
+
+async function pullStats(){
+  try{
+    const d = await api('/api/stock');
+    lastStats = {count:d.count||0, taken:d.taken||0};
+    online = true; hideDbError();
+    return lastStats;
+  }catch(e){
+    online=false; showDbError();
+    const s=localStock();
+    return {count:s.length, taken:localTaken()};
+  }
+}
+
+async function pullStock(){
+  try{
+    const d = await api('/api/admin/list',{headers:{'Content-Type':'application/json','x-admin-pass':ADMIN_PASSWORD}});
+    const arr = Array.isArray(d.accounts)?d.accounts:[];
+    stockCache = arr.map((line,i)=>({key:String(i), line:String(line)}));
+    return stockCache;
+  }catch(e){
+    if(!online){ showDbError(); const ls=localStock(); stockCache=ls.map((l,i)=>({key:String(i),line:l})); return stockCache; }
+    stockCache=[]; return stockCache;
+  }
+}
+
+/* سحب حساب — السيرفر هو اللي يقرر (مافيش تعارض بين متابعين) */
+async function claimOne(){
+  try{
+    const d = await api('/api/claim',{method:'POST',body:'{}'});
+    online=true; hideDbError();
+    return d.account||null;
+  }catch(e){
+    if(e.status===429 && e.data && e.data.error){ errmsg.textContent=e.data.error; errmsg.style.display='block'; return null; }
+    if(e.status===404) return null;
+    /* السيرفر مش متاح → وضع احتياطي محلي */
+    const s=localStock();
+    if(!s.length) return null;
+    const line=s.shift(); localSetStock(s); localSetTaken(localTaken()+1);
+    return line;
+  }
+}
+
+/* حفظ الحسابات: replace=false → يضيف فوق المخزون، true → يستبدل الكل */
+async function saveStock(lines, replace){
+  try{
+    const d = await api('/api/admin/set',{method:'POST',
+      headers:{'Content-Type':'application/json','x-admin-pass':ADMIN_PASSWORD},
+      body: JSON.stringify({accounts: lines, append: !replace})});
+    online=true; hideDbError();
+    await pullStats();
+    return {count:d.count||lines.length, dup:d.dup||0};
+  }catch(e){
+    if(!online){
+      if(replace){ localSetStock(lines); } else { const s=localStock(); lines.forEach(l=>{ if(!s.includes(l)) s.push(l); }); localSetStock(s); }
+      return {count:localStock().length, dup:0, local:true};
+    }
+    throw e;
+  }
+}
+
+/* ================= cooldown (server side) ================= */
+const DEVICE_KEY='mc_device_id';
+function deviceId(){
+  let id=localStorage.getItem(DEVICE_KEY);
+  if(!id){ id='d-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8); localStorage.setItem(DEVICE_KEY,id); }
+  return id;
+}
+function localCdLeft(){
+  const u=parseInt(localStorage.getItem(LS.cd+'_'+deviceId())||'0',10);
+  const l=Math.ceil((u-Date.now())/1000);
+  return l>0?l:0;
+}
+/* الكولداون الحقيقي محفوظ في السيرفر؛ هنا بنحفظ محلياً نسخة عشان الواجهة */
+async function serverCdLeft(){
+  return localCdLeft();
+}
+async function setServerCd(){
+  const until = Date.now()+COOLDOWN*1000;
+  localStorage.setItem(LS.cd+'_'+deviceId(), String(until));
+}
+
+/* ================= UI helpers ================= */
+function animNum(el,to){let from=parseInt(el.textContent,10)||0;if(from===to){el.textContent=to;return;}
+ let step=(to-from)/12,i=0;clearInterval(el._iv);el._iv=setInterval(()=>{from+=step;i++;el.textContent=Math.round(from);if(i>=12){el.textContent=to;clearInterval(el._iv);}},25);}
+
+async function refreshStats(){
+  const st=await pullStats();
+  animNum(nAvail,st.count); animNum(nTaken,st.taken); animNum(nTotal,st.count+st.taken);
+  if(st.count===0) errmsg.style.display='block'; else errmsg.style.display='none';
+}
+
+function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+
+async function startCd(resume){
+  if(!resume) await setServerCd();
+  gen.disabled=true;timerBox.classList.add('show');
+  async function tick(){
+    const l=await serverCdLeft();
+    clock.textContent=fmt(l);gen.textContent='WAIT '+fmt(l);bar.style.width=((COOLDOWN-l)/COOLDOWN*100)+'%';
+    if(l<=0){clearInterval(countdown);timerBox.classList.remove('show');gen.disabled=false;gen.textContent=t('genBtn');}
+  }
+  await tick(); clearInterval(countdown); countdown=setInterval(tick,1000);
+}
+
+/* ================= claim flow ================= */
+const gate=$('gate'),subBtn=$('subBtn'),subProg=$('subProg'),subBar=$('subBar'),subWait=$('subWait');
+let subTimer=null;
+
+gen.addEventListener('click',async ()=>{
+  if(gen.disabled)return;
+  const s=await pullStats();
+  if(!s.count){result.classList.remove('show');errmsg.style.display='block';errmsg.textContent=t('noAcc');return;}
+  errmsg.style.display='none';result.classList.remove('show');
+  gen.style.display='none';
+  subBtn.disabled=false;subProg.classList.remove('show');subBar.style.transition='none';subBar.style.width='0';subWait.classList.remove('show');
+  gate.classList.add('show');
+});
+
+subBtn.addEventListener('click',()=>{
+  window.open(YT_LINK,'_blank');
+  subBtn.disabled=true;
+  subProg.classList.add('show');subWait.classList.add('show');
+  let left=SUB_WAIT;subWait.textContent='Verifying… '+left+'s';
+  void subBar.offsetWidth;subBar.style.transition='width '+SUB_WAIT+'s linear';subBar.style.width='100%';
+  clearInterval(subTimer);
+  subTimer=setInterval(()=>{left--;subWait.textContent='Verifying… '+Math.max(left,0)+'s';if(left<=0){clearInterval(subTimer);deliverAccount();}},1000);
+});
+
+async function deliverAccount(){
+  gate.classList.remove('show');gen.style.display='block';
+  subBar.style.transition='none';subBar.style.width='0';
+  const line=await claimOne();
+  if(!line){errmsg.style.display='block';errmsg.textContent=t('noAcc');await refreshStats();return;}
+  await refreshStats();
+  const i=line.indexOf(':');
+  const email=line.slice(0,i).trim(),pass=line.slice(i+1).trim();
+  current={email,pass};emailEl.textContent=email;passEl.textContent=pass;
+  result.classList.remove('show');void result.offsetWidth;result.classList.add('show');
+  document.querySelector('.wantprem').classList.add('show');
+  await startCd(false);
+}
+
+copyBtn.addEventListener('click',()=>{if(!current)return;copyText('Email: '+current.email+'\nPassword: '+current.pass);
+ copyBtn.classList.add('copied');copyBtn.textContent='✅ '+t('copied');setTimeout(()=>{copyBtn.classList.remove('copied');copyBtn.textContent=t('copyAcc');},1700);});
+
+/* ================= premium demo codes ================= */
+function randSeg(n){const c='ABCDEFGHJKLMNPQRSTUVWXYZ0123456789';let o='';for(let i=0;i<n;i++)o+=c[Math.floor(Math.random()*c.length)];return o;}
+const xboxBox=$('xboxCode'),nitroBox=$('nitroCode');
+$('genXbox').addEventListener('click',()=>{xboxBox.textContent=randSeg(5)+'-'+randSeg(5)+'-'+randSeg(5)+'-'+randSeg(5)+'-'+randSeg(5);});
+$('genNitro').addEventListener('click',()=>{nitroBox.textContent='discord.gift/'+randSeg(16);});
+$('copyXbox').addEventListener('click',()=>{if(xboxBox.textContent!=='—'){copyText(xboxBox.textContent);}});
+$('copyNitro').addEventListener('click',()=>{if(nitroBox.textContent!=='—'){copyText(nitroBox.textContent);}});
+
+/* ================= buy -> discord ================= */
+const joinOverlay=$('joinOverlay');
+function openJoin(){joinOverlay.classList.add('show');}
+['buyBtn','buyPrem','buyHere','buyPremOverlay'].forEach(id=>{const el=$(id); if(el) el.addEventListener('click',openJoin);});
+$('joinBtn').addEventListener('click',()=>window.open(DISCORD_LINK,'_blank'));
+$('joinClose').addEventListener('click',()=>joinOverlay.classList.remove('show'));
+joinOverlay.addEventListener('click',e=>{if(e.target===joinOverlay)joinOverlay.classList.remove('show');});
+
+/* ================= copy ================= */
+function copyText(text){
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(showToast).catch(fb);}
+ else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);showToast();}
+}
+function showToast(){toast.textContent=t('copied');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1500);}
+
+/* ================= feats widget ================= */
+const featsWidget=$('featsWidget');
+$('featsToggle').addEventListener('click',e=>{e.stopPropagation();featsWidget.classList.toggle('open');});
+document.addEventListener('click',e=>{if(!featsWidget.contains(e.target))featsWidget.classList.remove('open');});
+
+/* ================= tabs ================= */
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.tabpane').forEach(x=>x.classList.remove('active'));
+ b.classList.add('active');
+ $('pane-'+b.dataset.tab).classList.add('active');
+}));
+
+/* ================= admin ================= */
+const overlay=$('overlay'),loginStep=$('loginStep'),adminStep=$('adminStep'),pw=$('pw'),loginerr=$('loginerr'),
+ loginBtn=$('loginBtn'),closeLogin=$('closeLogin'),stockBox=$('stockBox'),saveBtn=$('saveBtn'),
+ closeAdmin=$('closeAdmin'),adminCount=$('adminCount');
+$('gear').addEventListener('click',()=>{overlay.classList.add('show');loginStep.style.display='block';adminStep.style.display='none';pw.value='';loginerr.style.display='none';pw.focus();});
+closeLogin.addEventListener('click',()=>overlay.classList.remove('show'));
+closeAdmin.addEventListener('click',()=>overlay.classList.remove('show'));
+overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('show');});
+
+function parseBox(){return stockBox.value.split('\n').map(l=>l.trim()).filter(l=>l.includes(':'));}
+function updAdmin(){adminCount.textContent=parseBox().length;}
+stockBox.addEventListener('input',updAdmin);
+
+async function openAdmin(){
+  loginStep.style.display='none';adminStep.style.display='block';
+  stockBox.value='';stockBox.placeholder=t('sync');updAdmin();
+  const s=await pullStock();
+  stockBox.value=s.map(x=>x.line).join('\n');updAdmin();
+  stockBox.placeholder='test@gmail.com:pass1200';
+}
+loginBtn.addEventListener('click',async ()=>{if(pw.value===ADMIN_PASSWORD){await openAdmin();}else loginerr.style.display='block';});
+pw.addEventListener('keydown',e=>{if(e.key==='Enter')loginBtn.click();});
+
+saveBtn.addEventListener('click',async ()=>{
+  const lines=parseBox();
+  if(!lines.length){ saveBtn.textContent='⚠️ empty'; setTimeout(()=>saveBtn.textContent=t('saveBtn'),1500); return; }
+  saveBtn.disabled=true;saveBtn.textContent=t('sync');
+  try{
+    const r=await saveStock(lines,false);
+    await refreshStats();
+    saveBtn.textContent = '✅ '+r.count+' total';
+  }
+  catch(e){ saveBtn.textContent='❌ Error'; console.warn(e); showDbError(); }
+  setTimeout(()=>{saveBtn.disabled=false;saveBtn.textContent=t('saveBtn');},1800);
+});
+const replaceBtnEl = $('replaceBtn');
+if(replaceBtnEl){ replaceBtnEl.addEventListener('click', async ()=>{
+  const lines=parseBox();
+  if(!confirm('Replace ALL accounts with these '+lines.length+' ?')) return;
+  const b=replaceBtnEl; const old=b.textContent; b.disabled=true; b.textContent=t('sync');
+  try{ await saveStock(lines,true); await refreshStats(); b.textContent='✅ Done'; }
+  catch(e){ b.textContent='❌ Error'; }
+  setTimeout(()=>{b.disabled=false;b.textContent=old;},1600);
+}); }
+
+/* ================= particles ================= */
+const cv=$('particles'),ctx=cv.getContext('2d');
+let dots=[];
+function sizeCv(){cv.width=innerWidth;cv.height=innerHeight;}
+sizeCv();addEventListener('resize',sizeCv);
+for(let i=0;i<70;i++)dots.push({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*2+0.5,s:Math.random()*0.8+0.3,o:Math.random()*0.5+0.3});
+(function drawDots(){
+ ctx.clearRect(0,0,cv.width,cv.height);
+ dots.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fillStyle='rgba(255,255,255,'+p.o+')';ctx.fill();
+  p.y+=p.s; if(p.y>cv.height){p.y=-5;p.x=Math.random()*cv.width;}});
+ requestAnimationFrame(drawDots);
+})();
+
+/* ================= init ================= */
+window.addEventListener('load',()=>{ setTimeout(()=>$('intro').classList.add('hide'),3200); });
+
+(async function init(){
+  applyLang('en');
+  await refreshStats();
+  const left=await serverCdLeft();
+  if(left>0) await startCd(true);
+
+  /* تحديث تلقائي للأرقام كل 10 ثواني (أي متابع يسحب حساب، الكل يشوف) */
+  setInterval(()=>{ if(!document.querySelector('#overlay.show')) refreshStats(); }, 10000);
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden) refreshStats(); });
+})();
+</script>
+</body>
+</html>
